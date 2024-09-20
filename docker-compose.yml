@@ -1,0 +1,23 @@
+version: "3.8"
+
+services:
+  op_crm_backend:
+    build: ./backend
+    container_name: op_crm_backend
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./backend:/app
+    environment:
+      - DJANGO_SETTINGS_MODULE=op_crm_backend.settings
+    command: python manage.py runserver 0.0.0.0:8000
+  op_crm_frontend:
+    build:
+      context: ./frontend/op_crm_frontend/
+      dockerfile: Dockerfile
+    ports:
+      - "3001:8080"
+    volumes:
+      - ./frontend/op_crm_frontend/src:/app/src
+    command: npm run dev
+    restart: always
