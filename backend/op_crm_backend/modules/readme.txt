@@ -1,0 +1,1 @@
+This folder contains all the djangoapps for the project , By djangoapps i mean different modules our crm app will have for eg. hr_module(hrms)
